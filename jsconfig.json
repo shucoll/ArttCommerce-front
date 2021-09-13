@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@pageComponents/*": ["components/pages/*"],
+      "@styles/*": ["styles/*"],
+      "@public/*": ["public/*"],
+      "@axios": ["helpers/axios-instance"]
+    }
+  }
+}
