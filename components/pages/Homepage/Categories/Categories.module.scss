@@ -1,0 +1,9 @@
+.categories {
+  //margin-top: 2rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}

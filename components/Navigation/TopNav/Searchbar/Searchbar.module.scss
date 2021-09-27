@@ -1,0 +1,63 @@
+@import '/styles/assets/variables';
+
+.search {
+  flex: 0 0 40%;
+
+  display: flex;
+  align-content: center; 
+  justify-content: center;
+
+  &__input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: $color-grey-light;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 3px;
+    width: 95%;
+    transition: all 0.2s;
+    margin-right: -3.25rem;
+
+    &:focus {
+      outline: none;
+      width: 100%;
+      background-color: $color-grey-light-1;
+    }
+
+    &::-webkit-input-placeholder {
+      font-weight: 100;
+      color: $color-grey-dark;
+    }
+  }
+
+  &__input:focus + &__button {
+    // background-color: $color-grey-light-1; // on focus state of the input elemnt color of button ie the search svg also changes to the color of the input bar.
+  }
+
+  &__button {
+    // background-color: $color-grey-light;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+
+  // &__input:focus * &__icon {
+  //   fill: $color-primary;
+  // }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: $color-grey-dark;
+    // fill: $color-primary;
+    // color: $color-primary;
+  }
+
+
+}

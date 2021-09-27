@@ -33,9 +33,9 @@ const ProductGrid = (props) => {
           }`}
           key={index}
           style={{
-            background: `url('${item.img}')`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover'
+            backgroundImage: `url('${item.img}')`,
+            // backgroundPosition: 'center',
+            // backgroundSize: 'cover',
           }}
         >
           {/* <img src={item.img}></img> */}

@@ -10,6 +10,8 @@
   &__item {
     grid-column-start: auto;
     grid-row-start: auto;
+    background-position: center;
+    background-size: cover;
 
     display: flex;
     flex-direction: column;

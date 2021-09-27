@@ -1,0 +1,31 @@
+@import '/styles/assets/variables';
+@import '/styles/assets/mixin';
+
+.SideDrawer {
+  position: fixed;
+  height: 100%;
+  right: 0;
+  top: 0;
+  z-index: 300;
+  padding: 3.2rem;
+  transition: transform 0.3s ease-in;
+  background-color: #fff;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.close {
+  transform: translateX(100%);
+}
+
+.closeIcon {
+  height: 1.8rem;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+}
+
+
