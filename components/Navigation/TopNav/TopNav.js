@@ -3,11 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Searchbar from './Searchbar/Searchbar';
 import DrawerToggle from './DrawerToggle/DrawerToggle';
-import AccountIcon from '@public/svg/account.svg';
+import AccountIcon from '@public/svg/user.svg';
 import styles from './TopNav.module.scss';
-
-// import Dropdown from 'react-dropdown';
-// import 'react-dropdown/style.css';
 
 const TopNav = (props) => {
   const router = useRouter();

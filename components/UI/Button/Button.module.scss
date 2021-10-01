@@ -1,0 +1,16 @@
+@import '/styles/assets/variables';
+
+.btn {
+  background-color: $color-primary;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 1rem;
+  display: inline-block;
+  transition: all 0.2s;
+  font-family: inherit;
+  font-size: inherit;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+}

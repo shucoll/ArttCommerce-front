@@ -1,0 +1,22 @@
+@import '/styles/assets/variables';
+
+.footerList {
+  list-style: none;
+
+  &__head {
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #fff;
+  }
+
+  &__item {
+    a {
+      color: $color-grey-light-2;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: $color-grey-light;
+    }
+  }
+}

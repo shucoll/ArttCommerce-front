@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>ArtCommerce</title>
+        <title>ArttCommerce</title>
       </Head>
       <Homepage />
     </>

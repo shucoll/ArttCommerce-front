@@ -1,0 +1,77 @@
+@import '/styles/assets/variables';
+@import '/styles/assets/mixin';
+
+.footer {
+  margin-top: 4rem;
+  background-color: $color-grey-dark;
+  width: 100%;
+  display: flex;
+
+  &__container {
+    width: 100%;
+    padding: 3rem;
+    max-width: $max-width-content;
+    margin: 0 auto;
+    color: #fff;
+  }
+
+  &__listContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 3rem;
+    margin-bottom: 3.5rem;
+  }
+
+  &__socialNewsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // flex-grow: 1;
+  }
+
+  &__newsLetter {
+    &__input {
+      margin-top: 1rem;
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      padding: 1rem 0.5rem;
+      width: 250px;
+      border: none;
+      background-color: $color-grey-light-1;
+      color: $color-grey-dark;
+      margin-right: 1.5rem;
+
+      &:focus {
+        outline: none;
+      }
+
+      @include respond(bp-small1) {
+        width: 150px;
+      }
+    }
+  }
+
+  &__social {
+    align-self: flex-end;
+
+    &_icon {
+      width: 2rem;
+      fill: $color-grey-light-2;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:not(:last-child) {
+        margin-right: 4rem;
+      }
+
+      &:hover {
+        fill: $color-grey-light;
+      }
+    }
+
+    @include respond(bp-small1) {
+      margin-top: 2rem;
+    }
+  }
+}
