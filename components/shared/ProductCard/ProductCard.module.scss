@@ -1,0 +1,61 @@
+@import '/styles/assets/variables';
+.item {
+  grid-column-start: auto;
+  grid-row-start: auto;
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &::after {
+    content: '';
+    background: rgba(12, 12, 12, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    .item__text {
+      visibility: visible;
+    }
+    &::after {
+      background: rgba(12, 12, 12, 0.363);
+    }
+  }
+
+  &_medium {
+    grid-row-end: span 2;
+  }
+
+  &_tall {
+    grid-row-end: span 4;
+  }
+
+  &_full {
+    grid-column-end: auto;
+
+    // @media screen and (min-width: 768px) {
+    //   grid-column: 1/-1;
+    //   grid-row-end: span 2;
+    // }
+  }
+
+  &__text {
+    visibility: hidden;
+    background-color: $color-primary;
+    width: max-content;
+    z-index: 100;
+    padding: 0.5rem;
+    color: $color-grey-light;
+  }
+}

@@ -6,32 +6,4 @@
   grid-auto-flow: row dense;
   max-width: 1200px;
   margin: 0 auto;
-
-  &__item {
-    grid-column-start: auto;
-    grid-row-start: auto;
-    background-position: center;
-    background-size: cover;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    &_medium {
-      grid-row-end: span 2;
-    }
-
-    &_tall {
-      grid-row-end: span 4;
-    }
-
-    &_full {
-      grid-column-end: auto;
-
-      // @media screen and (min-width: 768px) {
-      //   grid-column: 1/-1;
-      //   grid-row-end: span 2;
-      // }
-    }
-  }
 }

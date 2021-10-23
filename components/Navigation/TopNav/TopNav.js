@@ -37,9 +37,15 @@ const TopNav = (props) => {
     <div className={styles.topNav}>
       <div className={styles.topNav__container}>
         <div className={styles.topNav__content}>
-          <Link href='/'>
-            <div style={{ color: '#fff', cursor: 'pointer' }}>Logo</div>
-          </Link>
+          <div style={{display: 'flex'}}>
+            <Link href='/'>
+              <div style={{ color: '#fff', cursor: 'pointer' }}>Logo</div>
+            </Link>
+            <Link href='/allartwork'>
+              <div style={{ color: '#fff', cursor: 'pointer', marginLeft: '1.5rem' }}>All Art</div>
+            </Link>
+          </div>
+
           <Searchbar />
 
           <div className={styles.topNav__navItems}>

@@ -12,7 +12,7 @@ const Sidebar = (props) => {
   return (
     <>
       <div className={attachedClasses.join(' ')}>
-        Cart should be big enough to fit products
+        Cart sidebar for all cart items
         <CloseIcon className={styles.closeIcon} onClick={props.closed} />
       </div>
       <Backdrop show={props.open} clicked={props.closed} />

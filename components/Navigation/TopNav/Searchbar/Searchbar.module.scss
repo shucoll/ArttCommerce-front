@@ -13,8 +13,6 @@
     font-size: inherit;
     font-weight: inherit;
     color: inherit;
-    // background-color: $color-grey-light;
-    // border: none;
     border: 1px solid $color-grey-dark-1;
     background-color: transparent;
     padding: 0.7rem 2rem;
@@ -27,8 +25,8 @@
       outline: none;
       background-color: $color-grey-dark-1;
     }
-    
-    // &:focus * .search__icon {
+
+    // &:focus > .search__icon {
     //   fill: $color-primary;
     // }
 
@@ -39,7 +37,6 @@
   }
 
   &__button {
-
     &:focus {
       outline: none;
     }
