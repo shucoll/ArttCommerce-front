@@ -1,0 +1,61 @@
+@import '/styles/assets/variables';
+@import '/styles/assets/mixin';
+
+.main {
+  display: flex;
+  padding: 2rem 0;
+
+  @include respond(bp-medium) {
+    flex-direction: column;
+  }
+
+  &__imgContainer {
+    width: 60%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include respond(bp-medium) {
+      width: 100%;
+    }
+  }
+
+  &__img {
+    width: 80%;
+    height: 100%;
+    object-fit: contain;
+
+    @include respond(bp-small1) {
+      width: 100%;
+    }
+  }
+
+  &__desc {
+    width: 40%;
+    max-width: 400px;
+    margin: 0 auto;
+
+    @include respond(bp-medium) {
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    &__price {
+      color: #000;
+      margin: 1rem 0 3rem 0;
+    }
+
+    &__icon {
+      width: 2rem;
+      fill: $color-grey-dark;
+      margin-right: 1rem;
+    }
+  }
+
+}
+
+.line {
+  margin: 2rem 0;
+  border-top: 1px solid $color-grey-light-2;
+}

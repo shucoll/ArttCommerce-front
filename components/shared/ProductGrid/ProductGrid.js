@@ -23,38 +23,38 @@ const ProductGrid = (props) => {
       img: '/img/m4.jpg',
       type: 'medium',
     },
-    {
-      img: 'img/l1.jpg',
-      type: 'tall',
-    },
-    {
-      img: '/img/m3.jpg',
-      type: 'medium',
-    },
-    {
-      img: '/img/m4.jpg',
-      type: 'medium',
-    },
-    {
-      img: 'img/l1.jpg',
-      type: 'tall',
-    },
-    {
-      img: '/img/m3.jpg',
-      type: 'medium',
-    },
-    {
-      img: '/img/m4.jpg',
-      type: 'medium',
-    },
+    // {
+    //   img: 'img/l1.jpg',
+    //   type: 'tall',
+    // },
+    // {
+    //   img: '/img/m3.jpg',
+    //   type: 'medium',
+    // },
+    // {
+    //   img: '/img/m4.jpg',
+    //   type: 'medium',
+    // },
+    // {
+    //   img: 'img/l1.jpg',
+    //   type: 'tall',
+    // },
+    // {
+    //   img: '/img/m3.jpg',
+    //   type: 'medium',
+    // },
+    // {
+    //   img: '/img/m4.jpg',
+    //   type: 'medium',
+    // },
   ];
 
   return (
-    <ul className={styles.grid}>
+    <div className={styles.grid}>
       {products.map((item, index) => (
         <ProductCard item={item} key={index} />
       ))}
-    </ul>
+    </div>
   );
 };
 
