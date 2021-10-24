@@ -1,7 +1,7 @@
-// import styles from './Login.module.scss';
+import Login from '@pageComponents/Login/Login';
 
-const Login = (props) => {
-  return <div>Login</div>;
+const LoginPage = (props) => {
+  return <Login />;
 };
 
-export default Login;
+export default LoginPage;
