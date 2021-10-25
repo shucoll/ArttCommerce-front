@@ -1,4 +1,5 @@
 // import Link from 'next/link';
+import Cart from '@components/Cart/Cart';
 import CloseIcon from '@public/svg/close-line.svg';
 import Backdrop from '@components/UI/Backdrop/Backdrop';
 import styles from './Sidebar.module.scss';
@@ -12,8 +13,13 @@ const Sidebar = (props) => {
   return (
     <>
       <div className={attachedClasses.join(' ')}>
-        Cart sidebar for all cart items
-        <CloseIcon className={styles.closeIcon} onClick={props.closed} />
+        <div className={styles.top}>
+          <div className={styles.top__close} onClick={props.closed}>
+            <CloseIcon className={styles.top__closeIcon} />
+            <span className={styles.top__close_text}>Close</span>
+          </div>
+        </div>
+        <Cart />
       </div>
       <Backdrop show={props.open} clicked={props.closed} />
     </>

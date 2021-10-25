@@ -7,9 +7,11 @@
   right: 0;
   top: 0;
   z-index: 300;
-  padding: 3.2rem;
+  width: 80vw;
+  max-width: 35rem;
   transition: transform 0.3s ease-in;
-  background-color: #fff;
+  background-color: $color-bg;
+  overflow-y: auto;
 }
 
 .open {
@@ -20,12 +22,27 @@
   transform: translateX(100%);
 }
 
-.closeIcon {
-  height: 1.8rem;
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  cursor: pointer;
+.top {
+  width: 100%;
+  background-color: $color-bg;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  position: sticky;
+  padding: 0.8rem 1rem;
+
+  &__close {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__closeIcon {
+    height: 1.2rem;
+  }
+
+  &__close_text {
+    font-size: 1.4rem;
+    margin-left: 0.7rem;
+  }
 }
-
-

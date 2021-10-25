@@ -16,7 +16,7 @@
 .icon {
   width: 3rem;
   margin: 0 auto;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .form {
@@ -42,13 +42,12 @@
     color: inherit;
     padding: 1rem 0.5rem;
     border: none;
-    // border: 1px solid $color-grey-dark;
     transition: all 0.3s;
     background-color: $color-grey-light-1;
 
     &:focus {
       outline: none;
-      border-bottom: 1px solid $color-primary;
+      box-shadow: 0px -1px 0px $color-primary inset;
       background-color: $color-grey-light-2;
     }
   }
