@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@store/actions/cartActions';
+
 import DeliveryIcon from '@public/svg/delivery.svg';
 import ReturnIcon from '@public/svg/return.svg';
 
@@ -7,8 +10,19 @@ import ProductGrid from '@components/shared/ProductGrid/ProductGrid';
 import styles from './ArtDetail.module.scss';
 
 const ArtDetail = (props) => {
+  const item = {
+    id: 2,
+    name: 'Some Other Art Name',
+    image: '/img/m1.jpg',
+    price: 80,
+    stock: 10,
+  };
+
+  const dispatch = useDispatch();
+
   const handleAddToCart = () => {
-    console.log('Added to cart');
+    // console.log('Added to cart');
+    dispatch(addToCart(item, 1));
   };
 
   return (
@@ -37,8 +51,10 @@ const ArtDetail = (props) => {
         </div>
       </div>
       <div>
-        <h3 className='h3' style={{marginBottom: '1.5rem'}}>Similar Art Work</h3>
-        <ProductGrid/>
+        <h3 className='h3' style={{ marginBottom: '1.5rem' }}>
+          Similar Art Work
+        </h3>
+        <ProductGrid />
       </div>
     </div>
   );

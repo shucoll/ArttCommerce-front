@@ -6,7 +6,8 @@
       "@pageComponents/*": ["components/pages/*"],
       "@styles/*": ["styles/*"],
       "@public/*": ["public/*"],
-      "@axios": ["helpers/axios-instance"]
+      "@axios": ["helpers/axios-instance"],
+      "@store/*": ["store/*"]
     }
   }
 }
