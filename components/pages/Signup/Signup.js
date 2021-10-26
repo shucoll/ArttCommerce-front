@@ -1,4 +1,8 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { CLEAR_AUTH_ERROR } from '@store/actionTypes/authTypes';
+import { signup } from '@store/actions/authActions';
 import SimpleReactValidator from 'simple-react-validator';
 import LockIcon from '@public/svg/lock.svg';
 import Button from '@components/UI/Button/Button';
@@ -7,11 +11,28 @@ import styles from './Signup.module.scss';
 const Signup = (props) => {
   const validator = useRef(new SimpleReactValidator());
 
+  const dispatch = useDispatch();
+
+  const { auth } = useSelector((state) => state);
+  const { loading, error } = auth;
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const [value, setValue] = useState(0); //for forcing re render
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, {
+        onClose: () =>
+          dispatch({
+            type: CLEAR_AUTH_ERROR,
+          }),
+      });
+    }
+  }, [error]);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -21,6 +42,9 @@ const Signup = (props) => {
   };
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+  const handlePasswordConfirmChange = (event) => {
+    setPasswordConfirm(event.target.value);
   };
 
   const inputItems = [
@@ -49,6 +73,19 @@ const Signup = (props) => {
       onChange: handlePasswordChange,
       validation: validator.current.message('password', password, 'required'),
     },
+
+    {
+      type: 'password',
+      placeholder: 'Password Confirm',
+      id: 'passwordConfirm',
+      value: passwordConfirm,
+      onChange: handlePasswordConfirmChange,
+      validation: validator.current.message(
+        'passwordConfirm',
+        password,
+        'required'
+      ),
+    },
   ];
 
   const handleFormSubmit = async (event) => {
@@ -58,12 +95,11 @@ const Signup = (props) => {
       name,
       email,
       password,
+      passwordConfirm,
     };
 
     if (validator.current.allValid()) {
-      try {
-        console.log(formData);
-      } catch (err) {}
+      dispatch(signup(formData));
     } else {
       validator.current.showMessages();
       setValue((value) => value + 1);
@@ -71,28 +107,30 @@ const Signup = (props) => {
   };
 
   return (
-    <div className={`${styles.wrapper} container`}>
-      <LockIcon className={styles.icon} />
-      <h2 className={styles.title}>Signup</h2>
-      <form className={styles.form}>
-        {inputItems.map((item, index) => (
-          <div className={styles.form__inputGroup} key={index}>
-            <input
-              type={item.type}
-              className={styles.form__input}
-              placeholder={item.placeholder}
-              id={item.id}
-              value={item.value}
-              onChange={item.onChange}
-            />
-            {item.validation}
-            <label htmlFor={item.id} className={styles.form__inputLabel}>
-              {item.placeholder}
-            </label>
-          </div>
-        ))}
-        <Button text='Submit' onClick={handleFormSubmit} type='sec' />
-      </form>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <LockIcon className={styles.icon} />
+        <h2 className={styles.title}>Signup</h2>
+        <form className={styles.form}>
+          {inputItems.map((item, index) => (
+            <div className={styles.form__inputGroup} key={index}>
+              <input
+                type={item.type}
+                className={styles.form__input}
+                placeholder={item.placeholder}
+                id={item.id}
+                value={item.value}
+                onChange={item.onChange}
+              />
+              {item.validation}
+              <label htmlFor={item.id} className={styles.form__inputLabel}>
+                {item.placeholder}
+              </label>
+            </div>
+          ))}
+          <Button text='Submit' onClick={handleFormSubmit} type='sec' />
+        </form>
+      </div>
     </div>
   );
 };

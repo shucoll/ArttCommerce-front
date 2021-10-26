@@ -8,21 +8,16 @@ export const login = (email, password) => async (dispatch) => {
       type: types.USER_LOGIN_REQUEST,
     });
 
-    //necessary to do this to send data to backend
-    // const config = {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // };
-
-    //here we get the user info and token if success and an error if anything is invalid
     const { data } = await axios.post(
       '/api/v1/users/login',
-      { email, password },
-      config
+      {
+        email,
+        password,
+      },
+      {
+        withCredentials: true,
+      }
     );
-
-    // console.log(data);
 
     dispatch({
       type: types.USER_LOGIN_SUCCESS,
@@ -33,9 +28,37 @@ export const login = (email, password) => async (dispatch) => {
     // localStorage.setItem('userInfo', JSON.stringify(data.data.user));
     // localStorage.setItem('loginToken', JSON.stringify(data.token));
   } catch (error) {
-    // console.log(error.response.data.message);
     dispatch({
       type: types.USER_LOGIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const signup = (formData) => async (dispatch) => {
+  const { name, email, password, passwordConfirm } = formData;
+  try {
+    dispatch({
+      type: types.USER_SIGNUP_REQUEST,
+    });
+
+    const { data } = await axios.post('/api/v1/users/signup', {
+      name,
+      email,
+      password,
+      passwordConfirm,
+    });
+
+    dispatch({
+      type: types.USER_SIGNUP_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.USER_SIGNUP_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

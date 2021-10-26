@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Searchbar from './Searchbar/Searchbar';
@@ -10,15 +10,27 @@ const TopNav = (props) => {
   const router = useRouter();
 
   const [dropdown, toggleDropdown] = useState(false);
+  const drop = useRef(null);
 
   const handleAccountClick = () => {
     toggleDropdown(!dropdown);
+  };
+  const handleAccountClose = () => {
+    if(dropdown)
+    toggleDropdown(false);
   };
 
   const handleDrawerItemClicked = (e, link) => {
     toggleDropdown(false);
     router.push(link);
   };
+
+  useEffect(() => {
+    document.addEventListener('click', handleAccountClose);
+    return () => {
+      document.removeEventListener('click', handleAccountClose);
+    };
+  });
 
   const dropDownStyle = { display: dropdown ? 'block' : 'none' };
 
@@ -37,12 +49,20 @@ const TopNav = (props) => {
     <div className={styles.topNav}>
       <div className={styles.topNav__container}>
         <div className={styles.topNav__content}>
-          <div style={{display: 'flex'}}>
+          <div style={{ display: 'flex' }}>
             <Link href='/'>
               <div style={{ color: '#fff', cursor: 'pointer' }}>Logo</div>
             </Link>
             <Link href='/allartwork'>
-              <div style={{ color: '#fff', cursor: 'pointer', marginLeft: '1.5rem' }}>All Art</div>
+              <div
+                style={{
+                  color: '#fff',
+                  cursor: 'pointer',
+                  marginLeft: '1.5rem',
+                }}
+              >
+                All Art
+              </div>
             </Link>
           </div>
 

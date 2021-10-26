@@ -2,10 +2,29 @@
 
 .wrapper {
   height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url('/img/signup_back.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.container {
+  margin-top: -$nav-height;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -$nav-height;
+  background-color: #fff;
+  width: 100%;
+  height: max-content;
+  max-width: 500px;
+  padding: 2rem;
 }
 
 .title {
@@ -16,7 +35,7 @@
 .icon {
   width: 3rem;
   margin: 0 auto;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .form {

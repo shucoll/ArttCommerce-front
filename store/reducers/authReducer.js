@@ -30,6 +30,18 @@ export const authReducer = (state = initialState, action) => {
     case types.USER_LOGOUT:
       return updateObject(state, { token: null, userInfo: null });
 
+    case types.USER_SIGNUP_REQUEST:
+      return updateObject(state, { error: null, loading: true });
+
+    case types.USER_SIGNUP_SUCCESS:
+      return updateObject(state, { error: null, loading: false });
+
+    case types.USER_SIGNUP_FAIL:
+      return updateObject(state, { error: action.payload, loading: false });
+
+    case types.CLEAR_AUTH_ERROR:
+      return updateObject(state, { error: null });
+
     default:
       return state;
   }

@@ -12,7 +12,7 @@ const ProductGrid = (props) => {
       type: 'medium',
     },
     {
-      img: 'img/l1.jpg',
+      img: '/img/l1.jpg',
       type: 'tall',
     },
     {
