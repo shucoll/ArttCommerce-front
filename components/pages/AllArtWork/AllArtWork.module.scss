@@ -43,6 +43,7 @@
 
 .content {
   width: 75%;
+  position: relative;
   @include respond(bp-medium) {
     width: 100%;
   }

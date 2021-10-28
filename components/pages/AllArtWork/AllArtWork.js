@@ -1,11 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Select from 'react-select';
+import { useDispatch, useSelector } from 'react-redux';
+// import { toast } from 'react-toastify';
+// import { listProducts } from '@store/actions/productActions';
+import Spinner from '@components/UI/Spinner/Spinner';
 import ProductGrid from '@components/shared/ProductGrid/ProductGrid';
 
 import styles from './AllArtWork.module.scss';
 
 const AllArtWork = (props) => {
+  const dispatch = useDispatch();
+
+  // const { productList } = useSelector((state) => state);
+  // const { loading, error, products } = productList;
+
   const [selectedOption, setSelectedOption] = useState(null);
+
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error, {
+  //       onClose: () =>
+  //         dispatch({
+  //           type: CLEAR_AUTH_ERROR,
+  //         }),
+  //     });
+  //   }
+  // }, [error]);
+
+  const handleCategoriesChange = (e) => {
+    console.log(e);
+  };
+  const handlePricingChange = (e) => {
+    console.log(e);
+  };
+  const handleRelevanceChange = (e) => {
+    console.log(e);
+  };
 
   const categoryOptions = [
     { value: 'floral', label: 'Floral' },
@@ -22,16 +52,6 @@ const AllArtWork = (props) => {
     { value: 'newest', label: 'Newest' },
     { value: 'trending', label: 'Trending' },
   ];
-
-  const handleCategoriesChange = (e) => {
-    console.log(e);
-  };
-  const handlePricingChange = (e) => {
-    console.log(e);
-  };
-  const handleRelevanceChange = (e) => {
-    console.log(e);
-  };
 
   return (
     <div className={`container ${styles.wrapper}`}>
@@ -65,6 +85,7 @@ const AllArtWork = (props) => {
         />
       </div>
       <div className={styles.content}>
+        {/* <Spinner center /> */}
         <ProductGrid />
       </div>
     </div>
