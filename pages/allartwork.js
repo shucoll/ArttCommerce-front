@@ -13,7 +13,7 @@ const AllArtWorkPage = (props) => {
     return null;
   }
 
-  console.log(props.data);
+  // console.log(props.data);
 
   const paginationHandler = (event) => {
     const currentPath = router.pathname;
@@ -27,8 +27,8 @@ const AllArtWorkPage = (props) => {
   };
 
   return (
-    <div>
-      <AllArtWork />
+    <div className={styles.container}>
+      <AllArtWork data={props.data} />
       <ReactPaginate
         pageCount={Math.ceil(props.data.totalResults / (props.limit * 1))}
         forcePage={props.page * 1 - 1}
@@ -55,10 +55,14 @@ const AllArtWorkPage = (props) => {
 
 export async function getServerSideProps({ query }) {
   const page = query.page || 1;
-  const limit = 2;
+  const limit = 3;
+  const category = query.category || '';
+  const sort = query.sort || '';
   try {
     const data = await axios.get(
-      `api/v1/products?limit=${limit}&fields=name,image,price,stock&page=${page}`
+      `api/v1/products?limit=${limit}&fields=name,image,imageType,price,stock&page=${page}${
+        category ? `&categoryId=${category}` : ''
+      }${sort ? `&sort=${sort}` : ''}`
     );
     return { props: { data: data.data, page, limit } };
   } catch (error) {

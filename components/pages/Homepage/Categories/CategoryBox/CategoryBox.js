@@ -3,7 +3,7 @@ import styles from './CategoryBox.module.scss';
 const CategoryBox = (props) => {
   const { data } = props;
   const style = {
-    backgroundImage: `url(${data.img})`,
+    backgroundImage: `url(${data.image})`,
   };
   return <div className={styles.categoryBox} style={style}></div>;
 };

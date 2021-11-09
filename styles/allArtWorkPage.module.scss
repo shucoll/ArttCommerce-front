@@ -1,5 +1,8 @@
 @import '/styles/assets/variables';
 
+.container {
+  min-height: calc(100vh - 60px);
+}
 .paginate {
   display: flex;
   padding-left: 0;
