@@ -13,8 +13,6 @@ const AllArtWorkPage = (props) => {
     return null;
   }
 
-  // console.log(props.data);
-
   const paginationHandler = (event) => {
     const currentPath = router.pathname;
     const currentQuery = router.query;
@@ -60,7 +58,7 @@ export async function getServerSideProps({ query }) {
   const sort = query.sort || '';
   try {
     const data = await axios.get(
-      `api/v1/products?limit=${limit}&fields=name,image,imageType,price,stock&page=${page}${
+      `api/v1/products?limit=${limit}&fields=id,name,image,imageType,price,stock&page=${page}${
         category ? `&categoryId=${category}` : ''
       }${sort ? `&sort=${sort}` : ''}`
     );

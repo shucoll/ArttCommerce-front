@@ -29,7 +29,7 @@
       background-color: $color-primary-dark;
     }
     &::after {
-      background: rgba(12, 12, 12, 0.363);
+      background: rgba(12, 12, 12, 0.253);
     }
   }
 
@@ -56,5 +56,6 @@
     z-index: 100;
     padding: 0.5rem;
     color: $color-grey-light;
+    transition: all 0.3s;
   }
 }

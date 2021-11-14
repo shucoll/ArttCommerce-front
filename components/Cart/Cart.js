@@ -26,7 +26,7 @@ const Cart = (props) => {
   };
 
   const calculateTotal = () => {
-    return cartItems.reduce((prev, cur) => prev + cur.qty * cur.price , 0);
+    return cartItems.reduce((prev, cur) => prev + cur.qty * cur.price, 0);
   };
 
   return (
@@ -42,7 +42,7 @@ const Cart = (props) => {
                 </div>
                 <span className={styles.cart__item__name}>{item.name}</span>
               </div>
-              <span>{item.price}</span>
+              <span>{`$${item.price}`}</span>
             </div>
             <div className={styles.cart__item__row2}>
               <button
@@ -76,7 +76,7 @@ const Cart = (props) => {
       <div className={styles.cart__calc}>
         <div className={styles.cart__calc__items}>
           <span>Subtotal</span>
-          <span>{calculateTotal()}</span>
+          <span>{`$${calculateTotal()}`}</span>
         </div>
         <div className={styles.cart__calc__items}>
           <span>Shipping</span>
@@ -85,7 +85,7 @@ const Cart = (props) => {
         <hr />
         <div className={styles.cart__calc__items}>
           <span>Total</span>
-          <span>{calculateTotal()}</span>
+          <span>{`$${calculateTotal()}`}</span>
         </div>
         <Button text='PROCEED TO CHECKOUT' type='sec' />
       </div>

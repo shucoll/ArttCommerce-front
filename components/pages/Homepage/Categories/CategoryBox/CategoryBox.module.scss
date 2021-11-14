@@ -7,4 +7,39 @@
   height: 15rem;
   background-position: center;
   background-size: cover;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &::after {
+    content: '';
+    background: rgba(12, 12, 12, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    .categoryBox__text {
+      background-color: $color-primary-dark;
+    }
+    &::after {
+      background: rgba(12, 12, 12, 0.253);
+    }
+  }
+
+  &__text {
+    background-color: $color-primary;
+    width: max-content;
+    z-index: 100;
+    padding: 0.5rem;
+    color: $color-grey-light;
+    height: max-content;
+    align-self: flex-end;
+    transition: all 0.3s;
+  }
 }

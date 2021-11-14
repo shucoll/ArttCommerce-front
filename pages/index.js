@@ -3,7 +3,6 @@ import axios from '@axios';
 import Homepage from '@pageComponents/Homepage/Homepage';
 
 export default function Home(props) {
-  console.log(props.data);
   return (
     <>
       <Head>
