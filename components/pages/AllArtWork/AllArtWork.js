@@ -32,6 +32,7 @@ const AllArtWork = (props) => {
     { value: 'floral', label: 'Floral' },
     { value: 'abstract', label: 'Abstract' },
     { value: 'people', label: 'People' },
+    { value: 'places', label: 'Places' },
   ];
 
   const pricingOptions = [

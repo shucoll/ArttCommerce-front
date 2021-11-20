@@ -3,14 +3,16 @@ import { updateObject } from '../utility';
 
 const initialState = {
   userInfo: null,
+  token: null,
   error: null,
   loading: false,
 };
 
 const authSuccess = (state, action) => {
-  //console.log(action.payload);
+  console.log(action.payload);
   return updateObject(state, {
-    userInfo: action.payload.data.user,
+    userInfo: action.payload.data,
+    token: action.payload.token,
     error: null,
     loading: false,
   });

@@ -19,7 +19,7 @@ const Sidebar = (props) => {
             <span className={styles.top__close_text}>Close</span>
           </div>
         </div>
-        <Cart />
+        <Cart closeSidebar={props.closed} />
       </div>
       <Backdrop show={props.open} clicked={props.closed} />
     </>

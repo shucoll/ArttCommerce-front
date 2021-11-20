@@ -53,14 +53,15 @@ const AllArtWorkPage = (props) => {
 
 export async function getServerSideProps({ query }) {
   const page = query.page || 1;
-  const limit = 3;
+  const limit = 8;
   const category = query.category || '';
   const sort = query.sort || '';
+  const q = query.q || '';
   try {
     const data = await axios.get(
-      `api/v1/products?limit=${limit}&fields=id,name,image,imageType,price,stock&page=${page}${
-        category ? `&categoryId=${category}` : ''
-      }${sort ? `&sort=${sort}` : ''}`
+      `api/v1/products?limit=${limit}&fields=slug,name,image,imageType,price,stock&page=${page}${
+        category ? `&categoryName=${category}` : ''
+      }${sort ? `&sort=${sort}` : ''}${q && `&q=${q}`}`
     );
     return { props: { data: data.data, page, limit } };
   } catch (error) {

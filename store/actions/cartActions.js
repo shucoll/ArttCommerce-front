@@ -1,6 +1,6 @@
 import * as types from '../actionTypes/cartTypes';
 
-export const addToCart = (item, qty) => async (dispatch, getState) => {
+export const addToCart = (item, quantity) => async (dispatch, getState) => {
   // const { data } = await axios.get(`/api/products/${id}`);
 
   //items to be shown/available in the cart
@@ -12,7 +12,7 @@ export const addToCart = (item, qty) => async (dispatch, getState) => {
       image: item.image,
       price: item.price,
       stock: item.stock,
-      qty,
+      quantity,
     },
   });
 

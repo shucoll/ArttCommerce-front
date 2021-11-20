@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { CLEAR_AUTH_ERROR } from '@store/actionTypes/authTypes';
@@ -15,7 +16,7 @@ const Signup = (props) => {
   const dispatch = useDispatch();
 
   const { auth } = useSelector((state) => state);
-  const { loading, error } = auth;
+  const { loading, error, token } = auth;
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,6 +24,12 @@ const Signup = (props) => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const [value, setValue] = useState(0); //for forcing re render
+
+  useEffect(() => {
+    if (token) {
+      router.push('/');
+    }
+  }, [token]);
 
   useEffect(() => {
     if (error) {

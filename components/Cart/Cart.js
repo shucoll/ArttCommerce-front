@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import router from 'next/router';
 import { addToCart, removeFromCart } from '@store/actions/cartActions';
 
 import CloseIcon from '@public/svg/close-line.svg';
@@ -16,9 +17,9 @@ const Cart = (props) => {
   // console.log(cart.cartItems);
 
   const handleCartItemChange = (item, action) => {
-    if (action == 'add') dispatch(addToCart(item, item.qty + 1));
-    else if (action == 'subtract' && item.qty > 1)
-      dispatch(addToCart(item, item.qty - 1));
+    if (action == 'add') dispatch(addToCart(item, item.quantity + 1));
+    else if (action == 'subtract' && item.quantity > 1)
+      dispatch(addToCart(item, item.quantity - 1));
   };
 
   const handleCartItemRemove = (item) => {
@@ -26,7 +27,12 @@ const Cart = (props) => {
   };
 
   const calculateTotal = () => {
-    return cartItems.reduce((prev, cur) => prev + cur.qty * cur.price, 0);
+    return cartItems.reduce((prev, cur) => prev + cur.quantity * cur.price, 0);
+  };
+
+  const proceedToCheckout = () => {
+    props.closeSidebar();
+    router.push('/checkout');
   };
 
   return (
@@ -54,7 +60,7 @@ const Cart = (props) => {
               <input
                 type='number'
                 className={styles.cart__item__input}
-                value={item.qty}
+                value={item.quantity}
                 readOnly
               ></input>
               <button
@@ -87,7 +93,11 @@ const Cart = (props) => {
           <span>Total</span>
           <span>{`$${calculateTotal()}`}</span>
         </div>
-        <Button text='PROCEED TO CHECKOUT' type='sec' />
+        <Button
+          text='PROCEED TO CHECKOUT'
+          type='sec'
+          onClick={proceedToCheckout}
+        />
       </div>
     </div>
   );

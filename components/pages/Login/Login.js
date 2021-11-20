@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
+import router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import SimpleReactValidator from 'simple-react-validator';
 import { toast } from 'react-toastify';
+
 import { login } from '@store/actions/authActions';
 import { CLEAR_AUTH_ERROR } from '@store/actionTypes/authTypes';
 import LockIcon from '@public/svg/lock.svg';
@@ -15,12 +17,18 @@ const Login = (props) => {
   const dispatch = useDispatch();
 
   const { auth } = useSelector((state) => state);
-  const { loading, error, userInfo } = auth;
+  const { loading, error, token } = auth;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [value, setValue] = useState(0); //for forcing re render
+
+  useEffect(() => {
+    if (token) {
+      router.push('/');
+    }
+  }, [token]);
 
   useEffect(() => {
     if (error) {
@@ -78,7 +86,7 @@ const Login = (props) => {
         <h2 className={styles.title}>Login</h2>
 
         {loading ? (
-          <Spinner/>
+          <Spinner />
         ) : (
           <form className={styles.form}>
             {inputItems.map((item, index) => (
