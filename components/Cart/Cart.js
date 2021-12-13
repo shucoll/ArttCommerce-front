@@ -96,6 +96,7 @@ const Cart = (props) => {
         <Button
           text='PROCEED TO CHECKOUT'
           type='sec'
+          fullWidth
           onClick={proceedToCheckout}
         />
       </div>

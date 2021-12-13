@@ -9,16 +9,15 @@ const Searchbar = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const currentPath = router.pathname;
+    // const currentPath = router.pathname;
     const currentQuery = router.query;
 
     currentQuery.q = searchText;
     if (!searchText) {
       delete currentQuery.q;
     }
-
     router.push({
-      pathname: currentPath,
+      pathname: '/allartwork',
       query: currentQuery,
     });
   };

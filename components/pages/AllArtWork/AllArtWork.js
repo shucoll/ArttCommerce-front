@@ -40,10 +40,10 @@ const AllArtWork = (props) => {
     { value: 'price', label: 'Low to high' },
   ];
 
-  const relevanceOptions = [
-    { value: 'newest', label: 'Newest' },
-    { value: 'trending', label: 'Trending' },
-  ];
+  // const relevanceOptions = [
+  //   { value: 'newest', label: 'Newest' },
+  //   { value: 'trending', label: 'Trending' },
+  // ];
 
   const getCategoryDefaultValue = () => {
     if (router.query && router.query.category) {

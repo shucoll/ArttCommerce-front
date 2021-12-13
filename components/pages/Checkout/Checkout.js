@@ -1,70 +1,89 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import router from 'next/router';
 
-import { createOrder } from '@store/actions/orderActions';
+// import Button from '@components/UI/Button/Button';
+import Overview from './Overview/Overview';
+import ShippingAddress from './ShippingAddress/ShippingAddress';
+import PaymentDetails from './PaymentDetails/PaymentDetails';
+import OrderConfirmation from './OrderConfirmation/OrderConfirmation';
 
-import Button from '@components/UI/Button/Button';
 import styles from './Checkout.module.scss';
 
 const Checkout = (props) => {
-  const { cart, auth } = useSelector((state) => state);
-  const { cartItems } = cart;
+  const { auth } = useSelector((state) => state);
   const { token } = auth;
 
-  const dispatch = useDispatch();
+  const [shippingAddress, setShippingAddress] = useState({});
 
-  const calculateTotal = () => {
-    return cartItems.reduce((prev, cur) => prev + cur.quantity * cur.price, 0);
+  // useEffect(() => {
+  //   if (!token) router.push('/login');
+  // }, [token]);
+
+  const [section, setSection] = useState(1);
+
+  const getShippingAddress = (address) => {
+    // console.log(address);
+    setShippingAddress(address);
+    setSection(3);
   };
 
-  useEffect(() => {
-    if (!token) router.push('/login');
-  }, [token]);
-
-  const handleCheckout = () => {
-    console.log(cartItems);
-    dispatch(
-      createOrder({ orderItems: cartItems, totalPrice: calculateTotal() })
-    );
+  const handleNextClick = () => {
+    if (section === 4) return;
+    setSection((section) => section + 1);
   };
+
+  // const handleBackClick = () => {
+  //   if (section === 1) return;
+  //   setSection((section) => section - 1);
+  // };
+
+  const stepContent = [
+    {
+      num: 1,
+      name: 'Overview',
+    },
+    {
+      num: 2,
+      name: 'Shipping Address',
+    },
+    {
+      num: 3,
+      name: 'Payment Details',
+    },
+    {
+      num: 4,
+      name: 'Order Confirmation',
+    },
+  ];
 
   return (
-    // <div className={`container ${styles.wrapper}`}>
     <div className={`container ${styles.checkout}`}>
-      <ul className={styles.list}>
-        {cartItems.map((item) => (
-          <li className={styles.list__item}>
-            <div className={styles.list__item__imgContainer}>
-              <img src={item.image} className={styles.list__item__img} />
-            </div>
-            <div className={styles.list__item__info}>
-              <h4>{item.name}</h4>
-              <span>{`$${item.price}`}</span>
-              <span>x{item.quantity}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div className={styles.calc}>
-        <h2>Total</h2>
-        <div className={styles.calc__items}>
-          <span>Subtotal</span>
-          <span>{`$${calculateTotal()}`}</span>
-        </div>
-        <div className={styles.calc__items}>
-          <span>Shipping</span>
-          <span>FREE</span>
-        </div>
-        <hr />
-        <div className={styles.calc__items}>
-          <span>Total</span>
-          <span>{`$${calculateTotal()}`}</span>
-        </div>
-        <Button text='CHECKOUT' type='sec' onClick={handleCheckout} />
+      <div className={styles.stepperContainer}>
+        <ul className={styles.stepper}>
+          {stepContent.map((item, index) => (
+            <li className={styles.stepper__item} key={index}>
+              <div
+                className={`${styles.step__counter} ${
+                  section === item.num ? styles.step__current : null
+                }`}
+              >
+                {item.num}
+              </div>
+              <div className={styles.step__text}>{item.name}</div>
+            </li>
+          ))}
+        </ul>
       </div>
+      {section === 1 && <Overview next={handleNextClick} />}
+      {section === 2 && (
+        <ShippingAddress
+          shippingAddress={(address) => getShippingAddress(address)}
+        />
+      )}
+      {section === 3 && <PaymentDetails shippingAddress={shippingAddress}/>}
+      {section === 4 && <OrderConfirmation />}
     </div>
-    // </div>
   );
 };
 

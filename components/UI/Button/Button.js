@@ -3,6 +3,10 @@ import styles from './Button.module.scss';
 
 const Button = React.forwardRef((props, ref) => {
   const height = props.height ? props.height : '4rem';
+  let style;
+  if (props.fullWidth) {
+    style = { ...style, width: '100%', display: 'block' };
+  }
 
   let classNames = `${styles.btn}`;
 
@@ -19,7 +23,7 @@ const Button = React.forwardRef((props, ref) => {
   if (props.isAnchor)
     return (
       <a
-        style={{ height: height }}
+        style={{ ...style, height: height }}
         className={styles.btn}
         ref={ref}
         href={props.href}
@@ -32,7 +36,7 @@ const Button = React.forwardRef((props, ref) => {
 
   return (
     <button
-      style={{ height: height }}
+      style={{ ...style, height: height }}
       className={classNames}
       onClick={props.onClick}
     >
