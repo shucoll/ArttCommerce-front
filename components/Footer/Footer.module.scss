@@ -6,6 +6,8 @@
   background-color: $color-grey-dark;
   width: 100%;
   display: flex;
+  margin-top: auto;
+  // align-self: flex-end;
 
   &__container {
     width: 100%;

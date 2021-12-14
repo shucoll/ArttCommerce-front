@@ -5,7 +5,7 @@ import DeliveryIcon from '@public/svg/delivery.svg';
 import ReturnIcon from '@public/svg/return.svg';
 
 import Button from '@components/UI/Button/Button';
-import ProductGrid from '@components/shared/ProductGrid/ProductGrid';
+// import ProductGrid from '@components/shared/ProductGrid/ProductGrid';
 
 import styles from './ArtDetail.module.scss';
 

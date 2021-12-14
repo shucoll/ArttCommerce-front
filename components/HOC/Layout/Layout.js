@@ -15,7 +15,7 @@ const Layout = (props) => {
     toggleSidebar(!showSidebar);
   };
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }} className={styles.layout}>
       <Sidebar open={showSidebar} closed={sidebarCloseHandler} />
       <TopNav
         drawerToggleClicked={sidebarToggleHandler}

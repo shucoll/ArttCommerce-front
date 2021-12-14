@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import router from 'next/router';
+import { CLEAR_ORDER_DETAILS } from '@store/actionTypes/orderTypes';
 
 // import Button from '@components/UI/Button/Button';
 import Overview from './Overview/Overview';
@@ -11,14 +12,23 @@ import OrderConfirmation from './OrderConfirmation/OrderConfirmation';
 import styles from './Checkout.module.scss';
 
 const Checkout = (props) => {
-  const { auth } = useSelector((state) => state);
+  const { auth, order } = useSelector((state) => state);
   const { token } = auth;
 
+  const dispatch = useDispatch();
+
+  const { orderDetails } = order;
   const [shippingAddress, setShippingAddress] = useState({});
 
-  // useEffect(() => {
-  //   if (!token) router.push('/login');
-  // }, [token]);
+  useEffect(() => {
+    if (!token) router.push('/login?redirect=checkout');
+  }, [token]);
+
+  useEffect(() => {
+    if (orderDetails) {
+      dispatch({ type: CLEAR_ORDER_DETAILS });
+    }
+  }, []);
 
   const [section, setSection] = useState(1);
 
@@ -81,8 +91,14 @@ const Checkout = (props) => {
           shippingAddress={(address) => getShippingAddress(address)}
         />
       )}
-      {section === 3 && <PaymentDetails shippingAddress={shippingAddress}/>}
+      {section === 3 && (
+        <PaymentDetails
+          shippingAddress={shippingAddress}
+          next={handleNextClick}
+        />
+      )}
       {section === 4 && <OrderConfirmation />}
+      {/* <OrderConfirmation /> */}
     </div>
   );
 };

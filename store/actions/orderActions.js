@@ -7,7 +7,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
   const {
     auth: { token },
   } = getState();
-
   try {
     dispatch({
       type: types.ORDER_CREATE_REQUEST,

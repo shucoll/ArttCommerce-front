@@ -1,0 +1,21 @@
+.container {
+  max-width: 600px;
+  margin: 3rem auto;
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkMark {
+  width: 10rem;
+  align-self: center;
+  color: rgb(75, 173, 53);
+}
+
+.text {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2rem;
+}

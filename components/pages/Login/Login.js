@@ -25,7 +25,13 @@ const Login = (props) => {
   const [value, setValue] = useState(0); //for forcing re render
 
   useEffect(() => {
-    if (token) {
+    if (token && router.query) {
+      const currentQuery = router.query;
+
+      if (currentQuery.redirect && currentQuery.redirect === 'checkout') {
+        router.push('/checkout');
+      }
+    } else if (token) {
       router.push('/');
     }
   }, [token]);

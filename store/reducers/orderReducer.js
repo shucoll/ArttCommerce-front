@@ -22,6 +22,12 @@ export const orderReducer = (state = initialState, action) => {
     case types.ORDER_CREATE_FAIL:
       return updateObject(state, { error: action.payload, loading: false });
 
+    case types.CLEAR_ORDER_ERROR:
+      return updateObject(state, { error: null });
+
+    case types.CLEAR_ORDER_DETAILS:
+      return updateObject(state, { orderDetails: null });
+
     default:
       return state;
   }

@@ -1,6 +1,5 @@
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-
 import CheckoutForm from './CheckoutForm/CheckoutForm';
 import styles from './PaymentDetails.module.scss';
 
@@ -15,7 +14,10 @@ const PaymentDetails = (props) => {
         <h3 className='h3' style={{ textAlign: 'center' }}>
           Payment Details
         </h3>
-        <CheckoutForm shippingAddress={props.shippingAddress} />
+        <CheckoutForm
+          shippingAddress={props.shippingAddress}
+          next={props.next}
+        />
       </Elements>
     </div>
   );

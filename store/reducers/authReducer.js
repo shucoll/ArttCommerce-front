@@ -9,7 +9,6 @@ const initialState = {
 };
 
 const authSuccess = (state, action) => {
-  console.log(action.payload);
   return updateObject(state, {
     userInfo: action.payload.data,
     token: action.payload.token,

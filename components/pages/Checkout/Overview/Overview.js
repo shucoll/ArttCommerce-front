@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 // import router from 'next/router';
 
 // import { createOrder } from '@store/actions/orderActions';
@@ -10,30 +10,16 @@ import styles from './Overview.module.scss';
 const Overview = (props) => {
   const { cart } = useSelector((state) => state);
   const { cartItems } = cart;
-  // const { token } = auth;
-
-  // const dispatch = useDispatch();
 
   const calculateTotal = () => {
     return cartItems.reduce((prev, cur) => prev + cur.quantity * cur.price, 0);
   };
 
-  // useEffect(() => {
-  //   if (!token) router.push('/login');
-  // }, [token]);
-
-  // const handleCheckout = () => {
-  //   console.log(cartItems);
-  //   dispatch(
-  //     createOrder({ orderItems: cartItems, totalPrice: calculateTotal() })
-  //   );
-  // };
-
   return (
     <div className={`container ${styles.overview}`}>
       <ul className={styles.list}>
-        {cartItems.map((item) => (
-          <li className={styles.list__item}>
+        {cartItems.map((item, index) => (
+          <li className={styles.list__item} key={index}>
             <div className={styles.list__item__imgContainer}>
               <img src={item.image} className={styles.list__item__img} />
             </div>

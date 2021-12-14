@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import router from 'next/router';
-import { addToCart, removeFromCart } from '@store/actions/cartActions';
+import { toast } from 'react-toastify';
 
+import { addToCart, removeFromCart } from '@store/actions/cartActions';
 import CloseIcon from '@public/svg/close-line.svg';
 import AddIcon from '@public/svg/add.svg';
 import SubtractIcon from '@public/svg/subtract.svg';
@@ -14,7 +16,17 @@ const Cart = (props) => {
   const { cart } = useSelector((state) => state);
   const { cartItems } = cart;
 
+  const [prevCartLength, setPrevCartLength] = useState(0);
+
   // console.log(cart.cartItems);
+
+  useEffect(() => {
+    if (cartItems.length > prevCartLength) {
+      toast.success('Added to cart');
+    }
+
+    setPrevCartLength(cartItems.length);
+  }, [cartItems]);
 
   const handleCartItemChange = (item, action) => {
     if (action == 'add') dispatch(addToCart(item, item.quantity + 1));
@@ -31,8 +43,12 @@ const Cart = (props) => {
   };
 
   const proceedToCheckout = () => {
-    props.closeSidebar();
-    router.push('/checkout');
+    if (cartItems.length < 1) {
+      toast.error('Add at least one item to the cart');
+    } else {
+      props.closeSidebar();
+      router.push('/checkout');
+    }
   };
 
   return (
