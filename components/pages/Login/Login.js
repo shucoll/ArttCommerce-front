@@ -25,7 +25,7 @@ const Login = (props) => {
   const [value, setValue] = useState(0); //for forcing re render
 
   useEffect(() => {
-    if (token && router.query) {
+    if (token && router.query.redirect) {
       const currentQuery = router.query;
 
       if (currentQuery.redirect && currentQuery.redirect === 'checkout') {

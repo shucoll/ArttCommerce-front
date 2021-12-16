@@ -14,6 +14,7 @@ const Layout = (props) => {
   const sidebarToggleHandler = () => {
     toggleSidebar(!showSidebar);
   };
+  
   return (
     <div style={{ position: 'relative' }} className={styles.layout}>
       <Sidebar open={showSidebar} closed={sidebarCloseHandler} />

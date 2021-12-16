@@ -1,5 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '@store/actions/authActions';
 import { useRouter } from 'next/router';
 import Searchbar from './Searchbar/Searchbar';
 import DrawerToggle from './DrawerToggle/DrawerToggle';
@@ -8,16 +10,22 @@ import styles from './TopNav.module.scss';
 
 const TopNav = (props) => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
+  const { auth } = useSelector((state) => state);
+  const { token } = auth;
   const [dropdown, toggleDropdown] = useState(false);
-  const drop = useRef(null);
+  // const drop = useRef(null);
 
   const handleAccountClick = () => {
     toggleDropdown(!dropdown);
   };
   const handleAccountClose = () => {
-    if(dropdown)
-    toggleDropdown(false);
+    if (dropdown) toggleDropdown(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   const handleDrawerItemClicked = (e, link) => {
@@ -34,7 +42,7 @@ const TopNav = (props) => {
 
   const dropDownStyle = { display: dropdown ? 'block' : 'none' };
 
-  const dropdownOptions = [
+  let dropdownOptions = [
     {
       text: 'Login',
       link: '/login',
@@ -44,6 +52,15 @@ const TopNav = (props) => {
       link: '/signup',
     },
   ];
+
+  if (token) {
+    dropdownOptions = [
+      {
+        text: 'Account',
+        link: '/account',
+      },
+    ];
+  }
 
   return (
     <div className={styles.topNav}>
@@ -83,6 +100,7 @@ const TopNav = (props) => {
                   {item.text}
                 </li>
               ))}
+              {token && <li onClick={handleLogout}>Logout</li>}
             </ul>
             <DrawerToggle
               clicked={props.drawerToggleClicked}
