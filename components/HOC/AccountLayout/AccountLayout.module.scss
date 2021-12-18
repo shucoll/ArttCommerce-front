@@ -1,3 +1,4 @@
+@import '/styles/assets/variables';
 @import '/styles/assets/mixin';
 
 .wrapper {
@@ -34,17 +35,24 @@
     padding: 1.5rem 1rem;
     margin-top: 1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 
     &:hover {
-      background-color: #fce6ed;
+      color: $color-primary;
     }
 
     &_selected {
       background-color: #f8ccd9;
 
       &:hover {
-      background-color: #f8d1dc;
+        color: $color-font;
       }
+    }
+
+    &__icon {
+      width: 2rem;
+      margin-right: 1rem;
     }
   }
 }
@@ -52,7 +60,7 @@
 .main {
   min-height: 100vh;
   height: 100%;
-  background-color: lightgray;
+  background-color: $color-bg;
   padding: 2rem;
   padding-top: 3.5rem;
   width: 80%;

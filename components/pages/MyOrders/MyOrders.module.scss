@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+}
+
+.orders {
+  display: flex;
+  flex-direction: column;
+}
+
+.order {
+  &__card {
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  &__details {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+}

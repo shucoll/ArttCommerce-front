@@ -1,7 +1,28 @@
 @import '/styles/assets/variables';
 
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
 .cart__icon {
   width: 3rem;
   fill: $color-grey-light;
   cursor: pointer;
+}
+
+.number {
+  position: absolute;
+  background-color: $color-grey-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -2px;
+  left: 15px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
 }

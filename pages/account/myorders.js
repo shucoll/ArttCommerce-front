@@ -1,4 +1,4 @@
-import Account from '@components/HOC/Layout/Account/Account';
+import Account from '@components/HOC/AccountLayout/AccountLayout';
 import MyOrders from '@pageComponents/MyOrders/MyOrders';
 
 const MyOrdersPage = (props) => {

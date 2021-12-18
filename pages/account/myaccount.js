@@ -1,4 +1,4 @@
-import Account from '@components/HOC/Layout/Account/Account';
+import Account from '@components/HOC/AccountLayout/AccountLayout';
 import MyAccount from '@pageComponents/MyAccount/MyAccount';
 
 const MyAccountPage = (props) => {

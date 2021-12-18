@@ -57,7 +57,7 @@ const TopNav = (props) => {
     dropdownOptions = [
       {
         text: 'Account',
-        link: '/account',
+        link: '/account/myaccount',
       },
     ];
   }

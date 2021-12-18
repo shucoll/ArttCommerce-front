@@ -40,3 +40,37 @@ export const createOrder = (order) => async (dispatch, getState) => {
     });
   }
 };
+
+export const getUserOrders = () => async (dispatch, getState) => {
+  const {
+    auth: { token },
+  } = getState();
+  try {
+    dispatch({
+      type: types.USER_ORDERS_REQUEST,
+    });
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const { data } = await axios.get('/api/v1/orders?sort=createdAt', config);
+
+    dispatch({
+      type: types.USER_ORDERS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: types.USER_ORDERS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};

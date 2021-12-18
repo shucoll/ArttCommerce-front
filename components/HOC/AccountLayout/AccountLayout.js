@@ -3,7 +3,9 @@ import { useRouter } from 'next/router';
 import useWindowSize from '@components/hooks/useWindowDimensions';
 import Backdrop from '@components/UI/Backdrop/Backdrop';
 import AppList from '@public/svg/app-list.svg';
-import styles from './Account.module.scss';
+import OrdersIcon from '@public/svg/orders.svg';
+import AccountIcon from '@public/svg/account.svg';
+import styles from './AccountLayout.module.scss';
 
 const Account = (props) => {
   const router = useRouter();
@@ -15,11 +17,13 @@ const Account = (props) => {
       name: 'My Account',
       link: 'myaccount',
       classNames: [styles.sidebar__item],
+      icon: <AccountIcon className={styles.sidebar__item__icon} />,
     },
     {
       name: 'My Orders',
       link: 'myorders',
       classNames: [styles.sidebar__item],
+      icon: <OrdersIcon className={styles.sidebar__item__icon} />,
     },
   ]);
 
@@ -69,6 +73,7 @@ const Account = (props) => {
             key={index}
             onClick={() => sidebarItemSelectHandler(item.link)}
           >
+            {item.icon}
             {item.name}
           </div>
         ))}
