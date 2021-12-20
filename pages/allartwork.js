@@ -63,6 +63,7 @@ export async function getServerSideProps({ query }) {
         category ? `&categoryName=${category}` : ''
       }${sort ? `&sort=${sort}` : ''}${q && `&q=${q}`}`
     );
+    // console.log(data.data);
     return { props: { data: data.data, page, limit } };
   } catch (error) {
     if (error.response)

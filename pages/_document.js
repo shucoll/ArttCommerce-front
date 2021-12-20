@@ -10,6 +10,7 @@ class CustomDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          <title>ArttMart</title>
           <link
             href='https://fonts.googleapis.com/css2?family=Italiana&family=Roboto:wght@300;400&display=swap'
             rel='stylesheet'

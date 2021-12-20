@@ -102,7 +102,7 @@ const AllArtWork = (props) => {
       </div>
       <div className={styles.content}>
         {/* <Spinner center /> */}
-        <ProductGrid data={props.data.data.data} />
+        <ProductGrid data={props.data.data} />
       </div>
     </div>
   );

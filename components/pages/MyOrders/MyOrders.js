@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import { getUserOrders } from '@store/actions/orderActions';
-import { CLEAR_USER_ORDERS_ERROR } from '@store/actionTypes/orderTypes';
 import Spinner from '@components/UI/Spinner/Spinner';
 import styles from './MyOrders.module.scss';
 
@@ -11,24 +9,11 @@ const MyOrders = (props) => {
 
   const { userOrders } = useSelector((state) => state);
 
-  const { loading, error, orderList } = userOrders;
+  const { loading, orderList } = userOrders;
 
   useEffect(() => {
     dispatch(getUserOrders());
   }, []);
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error, {
-        onClose: () =>
-          dispatch({
-            type: CLEAR_USER_ORDERS_ERROR,
-          }),
-      });
-    }
-  }, [error]);
-
-  // if (orderList) console.log(orderList);ß
 
   return (
     <div className={styles.container}>
@@ -37,7 +22,7 @@ const MyOrders = (props) => {
         <Spinner center />
       ) : orderList ? (
         <div className={styles.orders}>
-          {orderList.data.data.map((item, index) => (
+          {orderList.data.map((item, index) => (
             <div className={styles.order__card} key={index}>
               <h3>Order No #{index + 1}</h3>
               <div className={styles.order__details}>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import router from 'next/router';
 import { toast } from 'react-toastify';
@@ -16,17 +16,17 @@ const Cart = (props) => {
   const { cart } = useSelector((state) => state);
   const { cartItems } = cart;
 
-  const [prevCartLength, setPrevCartLength] = useState(0);
+  // const [prevCartLength, setPrevCartLength] = useState(0);
 
   // console.log(cart.cartItems);
 
-  useEffect(() => {
-    if (cartItems.length > prevCartLength) {
-      toast.success('Added to cart');
-    }
+  // useEffect(() => {
+  //   if (cartItems.length > prevCartLength) {
+  //     toast.success('Added to cart');
+  //   }
 
-    setPrevCartLength(cartItems.length);
-  }, [cartItems]);
+  //   setPrevCartLength(cartItems.length);
+  // }, [cartItems]);
 
   const handleCartItemChange = (item, action) => {
     if (action == 'add') dispatch(addToCart(item, item.quantity + 1));

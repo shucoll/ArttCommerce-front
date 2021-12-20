@@ -2,10 +2,10 @@ import { useState, useRef, useEffect } from 'react';
 import router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import SimpleReactValidator from 'simple-react-validator';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 import { login } from '@store/actions/authActions';
-import { CLEAR_AUTH_ERROR } from '@store/actionTypes/authTypes';
+// import { CLEAR_AUTH_ERROR } from '@store/actionTypes/authTypes';
 import LockIcon from '@public/svg/lock.svg';
 import Button from '@components/UI/Button/Button';
 import Spinner from '@components/UI/Spinner/Spinner';
@@ -17,7 +17,7 @@ const Login = (props) => {
   const dispatch = useDispatch();
 
   const { auth } = useSelector((state) => state);
-  const { loading, error, token } = auth;
+  const { loading, token } = auth;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,16 +36,16 @@ const Login = (props) => {
     }
   }, [token]);
 
-  useEffect(() => {
-    if (error) {
-      toast.error(error, {
-        onClose: () =>
-          dispatch({
-            type: CLEAR_AUTH_ERROR,
-          }),
-      });
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error, {
+  //       onClose: () =>
+  //         dispatch({
+  //           type: CLEAR_AUTH_ERROR,
+  //         }),
+  //     });
+  //   }
+  // }, [error]);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);

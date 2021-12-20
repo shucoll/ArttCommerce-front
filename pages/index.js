@@ -6,7 +6,7 @@ export default function Home(props) {
   return (
     <>
       <Head>
-        <title>ArttCommerce</title>
+        <title>ArttMart</title>
       </Head>
       <Homepage data={props.data} />
     </>

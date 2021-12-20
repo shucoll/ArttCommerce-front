@@ -1,4 +1,5 @@
 import * as types from '../actionTypes/cartTypes';
+import { toast } from 'react-toastify';
 import { updateObject } from '../utility';
 
 const initialState = {
@@ -20,6 +21,7 @@ export const cartReducer = (state = initialState, action) => {
           ),
         };
       } else {
+        toast.success('Added to cart');
         return updateObject(state, { cartItems: [...state.cartItems, item] });
       }
 
