@@ -7,16 +7,10 @@ export const login = (email, password) => async (dispatch) => {
       type: types.USER_LOGIN_REQUEST,
     });
 
-    const { data } = await axios.post(
-      '/api/v1/users/login',
-      {
-        email,
-        password,
-      },
-      {
-        withCredentials: true,
-      }
-    );
+    const { data } = await axios.post('/api/v1/users/login', {
+      email,
+      password,
+    });
 
     dispatch({
       type: types.USER_LOGIN_SUCCESS,
@@ -97,7 +91,6 @@ export const updateMe = (formData) => async (dispatch, getState) => {
       type: types.USER_UPDATE_SUCCESS,
       payload: data,
     });
-
   } catch (error) {
     dispatch({
       type: types.USER_UPDATE_FAIL,
@@ -141,7 +134,6 @@ export const updateMyPassword = (formData) => async (dispatch, getState) => {
     dispatch({
       type: types.USER_PASSWORD_UPDATE_SUCCESS,
     });
-
   } catch (error) {
     dispatch({
       type: types.USER_PASSWORD_UPDATE_FAIL,
