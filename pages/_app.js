@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux';
 import { useStore } from '@store/setup';
 import Layout from '@components/HOC/Layout/Layout';
+import Head from 'next/head';
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.scss';
@@ -11,6 +12,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Layout>
+        <Head>
+          <title>ArttMart</title>
+        </Head>
         <Component {...pageProps} />
         <ToastContainer
           hideProgressBar={true}
