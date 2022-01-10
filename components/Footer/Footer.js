@@ -14,7 +14,7 @@ const Footer = (props) => {
 
   const handleNewsLetterSignupClick = () => {
     console.log(email);
-  }
+  };
 
   const list1 = {
     title: 'Top Catagories',
@@ -76,7 +76,7 @@ const Footer = (props) => {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
-            <Button text='SIGNUP' onClick={handleNewsLetterSignupClick}/>
+            <Button text='SIGNUP' onClick={handleNewsLetterSignupClick} />
           </div>
           <div className={styles.footer__social}>
             <FacebookIcon className={styles.footer__social_icon} />
@@ -84,6 +84,10 @@ const Footer = (props) => {
             <TwitterIcon className={styles.footer__social_icon} />
           </div>
         </div>
+        <p style={{ textAlign: 'center', fontSize: '1.2rem' }}>
+          This platform is just a demo implementation and is not a real
+          e-commerce platform
+        </p>
       </div>
     </footer>
   );
