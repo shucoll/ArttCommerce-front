@@ -36,6 +36,7 @@ export const authReducer = (state = initialState, action) => {
       return updateObject(state, { loading: true });
 
     case types.USER_SIGNUP_SUCCESS:
+      toast.success('Signup successful! Please login to continue');
       return updateObject(state, { loading: false });
 
     case types.USER_SIGNUP_FAIL:
@@ -46,7 +47,7 @@ export const authReducer = (state = initialState, action) => {
       return updateObject(state, { loading: true });
 
     case types.USER_UPDATE_SUCCESS:
-      toast.success('Info updated');
+      toast.success('Info Updated');
       return updateObject(state, {
         loading: false,
         userInfo: action.payload.data,

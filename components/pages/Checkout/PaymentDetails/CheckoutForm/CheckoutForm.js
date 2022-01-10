@@ -25,13 +25,19 @@ const CheckoutForm = (props) => {
     }
   }, [orderDetails]);
 
+  useEffect(() => {
+    if (!orderDetails) {
+      toast.info('Demo details - 4242424242424242  04/24 242 42424', {autoClose:false});
+    }
+  }, [orderDetails]);
+
   const calculateTotal = () => {
     return cartItems.reduce((prev, cur) => prev + cur.quantity * cur.price, 0);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -56,7 +62,7 @@ const CheckoutForm = (props) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       {loading ? (
-        <div style={{alignSelf: 'center'}}>
+        <div style={{ alignSelf: 'center' }}>
           <Spinner />
         </div>
       ) : (
